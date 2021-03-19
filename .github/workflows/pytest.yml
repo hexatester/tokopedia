@@ -35,7 +35,7 @@ jobs:
               ~/.cache/pip
             elif [ "$RUNNER_OS" == "Windows" ]; then
               ~\AppData\Local\pip\Cache
-          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements-dev.txt') }}
           restore-keys: |
             ${{ runner.os }}-pip-
       - name: Install dependencies
