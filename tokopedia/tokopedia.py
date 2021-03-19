@@ -1,12 +1,19 @@
+from typing import Optional
+
 from . import AccessToken
 from .constants import BASE_URL
 
 
 class Tokopedia:
-    def __init__(self, client_id: str, client_secret: str):
+    def __init__(
+        self,
+        client_id: str,
+        client_secret: str,
+        access_token: Optional[AccessToken] = None,
+    ):
         self._client_id = client_id
         self._client_secret = client_secret
-        self._access_token = AccessToken.create(
+        self._access_token = access_token or AccessToken.create(
             client_id=client_id,
             client_secret=client_secret,
         )
