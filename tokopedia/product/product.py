@@ -19,7 +19,7 @@ class ProductPrice:
     value: int
     currency: int
     idr: int
-    LastUpdateUnix: datetime = attr.ib(factory=datetime.fromtimestamp)
+    LastUpdateUnix: datetime = attr.ib(converter=datetime.fromtimestamp)
 
 
 @attr.dataclass(slots=True)
