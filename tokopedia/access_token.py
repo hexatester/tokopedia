@@ -27,6 +27,21 @@ class AccessToken:
         headers.update({"Authorization": f"{self.token_type} {self.access_token}"})
         return headers
 
+    def update(
+        self,
+        client_id: str,
+        client_secret: str,
+        url: str = "https://accounts.tokopedia.com/token",
+    ):
+        new_access_token = self.create(
+            client_id=client_id,
+            client_secret=client_secret,
+            url=url,
+        )
+        self.access_token = new_access_token.access_token
+        self.expires_in = new_access_token.expires_in
+        self.created = new_access_token.created
+
     @classmethod
     def create(
         cls,
