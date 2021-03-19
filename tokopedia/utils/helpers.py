@@ -1,10 +1,8 @@
 from datetime import datetime
-from typing import Union, Optional
+from typing import Union
 
 
-def int_to_datetime(value: Union[int, float, None] = None) -> Optional[datetime]:
-    if value is None:
-        return value
+def int_to_datetime(value: Union[int, float]) -> datetime:
     if isinstance(value, float):
         return datetime.fromtimestamp(value)
     return datetime.fromtimestamp(float(value))
