@@ -2,6 +2,8 @@ import attr
 from datetime import datetime
 from typing import Dict, List
 
+from tokopedia.utils.helpers import int_to_datetime
+
 
 @attr.dataclass(slots=True)
 class ProductBasic:
@@ -19,7 +21,7 @@ class ProductPrice:
     value: int
     currency: int
     idr: int
-    LastUpdateUnix: datetime = attr.ib(converter=datetime.fromtimestamp)
+    LastUpdateUnix: datetime = attr.ib(converter=int_to_datetime)
 
 
 @attr.dataclass(slots=True)
