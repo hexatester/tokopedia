@@ -1,8 +1,26 @@
 [tool.poetry]
 name = "tokopedia"
 version = "0.1.0"
-description = ""
+description = "Python SDK for Tokopedia Seller API "
 authors = ["hexatester <hexatester@protonmail.com>"]
+readme = "README.md"
+keywords = [
+    "tokopedia",
+    "openapi",
+    "api-client",
+    "tokopedia-api",
+    "seller-api",
+]
+classifiers=[
+    "Development Status :: 1 - Planning",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Intended Audience :: Developers",
+    "Topic :: Office/Business",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+]
 
 [tool.poetry.dependencies]
 python = "^3.8"
