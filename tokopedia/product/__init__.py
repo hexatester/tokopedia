@@ -1,4 +1,40 @@
+from .product import (
+    ProductBasic,
+    ProductPrice,
+    ProductWeight,
+    ProductStock,
+    ProductVariant,
+    ProductMenu,
+    ProductExtraAttribute,
+    ProductCategory,
+    ProductPicture,
+    ProductGMStats,
+    ProductStats,
+    ProductOther,
+    ProductCampaign,
+    ProductWarehouseStock,
+    ProductWarehouse,
+    Product,
+)
 from .api import ProductApi
 
 
-__all__ = ["ProductApi"]
+__all__ = [
+    "ProductBasic",
+    "ProductPrice",
+    "ProductWeight",
+    "ProductStock",
+    "ProductVariant",
+    "ProductMenu",
+    "ProductExtraAttribute",
+    "ProductCategory",
+    "ProductPicture",
+    "ProductGMStats",
+    "ProductStats",
+    "ProductOther",
+    "ProductCampaign",
+    "ProductWarehouseStock",
+    "ProductWarehouse",
+    "Product",
+    "ProductApi",
+]
