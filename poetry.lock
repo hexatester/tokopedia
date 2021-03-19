@@ -30,7 +30,7 @@ python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
 name = "attrs"
 version = "20.3.0"
 description = "Classes Without Boilerplate"
-category = "dev"
+category = "main"
 optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
 
@@ -490,7 +490,7 @@ python-versions = "*"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "2c1cb789409cf5f4c6bef521b4c4ce600ee292a0120851d81c392ab49b5f48db"
+content-hash = "e65f1db70d3162fc4e671410f2c90f6aca056d073964c658fc279d1165c175db"
 
 [metadata.files]
 appdirs = [
