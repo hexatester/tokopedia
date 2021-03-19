@@ -13,6 +13,14 @@ class AccessToken:
     token_type: str
     created: datetime = attr.ib(factory=datetime.now)
 
+    @property
+    def when_expires(self) -> datetime:
+        return datetime.fromtimestamp(self.created.timestamp() + self.expires_in)
+
+    @property
+    def is_expires(self) -> bool:
+        return self.when_expires > datetime.now()
+
     @classmethod
     def create(
         cls,
