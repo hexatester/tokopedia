@@ -49,7 +49,7 @@ class AccessToken:
         client_secret: str,
         url: str = "https://accounts.tokopedia.com/token",
     ) -> "AccessToken":
-        auth = b64encode(f"{client_id}:{client_secret}".encode("utf-8"))
+        auth = str(b64encode(f"{client_id}:{client_secret}".encode("utf-8")), "utf-8")
         headers = {"Authorization": f"Basic {auth}", "User-Agent": USER_AGENT}
         query = {"grant_type": "client_credentials"}
         res = requests.post(
