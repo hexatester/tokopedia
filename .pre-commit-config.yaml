@@ -1,0 +1,27 @@
+repos:
+  - repo: https://github.com/psf/black
+    rev: 20.8b1
+    hooks:
+      - id: black
+        files: ^(tokopedia|tests)/.*\.py$
+        args:
+          - --diff
+  - repo: https://gitlab.com/pycqa/flake8
+    rev: 3.9.0
+    hooks:
+      - id: flake8
+        args:
+          - --ignore=E501
+  - repo: git://github.com/pycqa/pylint
+    rev: pylint-2.7.2
+    hooks:
+      - id: pylint
+        files: ^tokopedia/.*\.py$
+        args:
+          - --errors-only
+          - --disable=import-error
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: "v0.812"
+    hooks:
+      - id: mypy
+        files: ^tokopedia/.*\.py$
