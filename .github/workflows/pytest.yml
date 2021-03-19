@@ -1,0 +1,54 @@
+name: Tests
+
+on:
+  pull_request:
+    branches:
+      - main
+  schedule:
+    - cron: 7 3 * * *
+  push:
+    branches:
+      - main
+    tags:
+      - "v*.*.*"
+
+jobs:
+  pytest:
+    name: pytest
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        python-version: [3.6, 3.7, 3.8, 3.9]
+        os: [ubuntu-latest, windows-latest]
+      fail-fast: False
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Cache pip
+        uses: actions/cache@v2
+        with:
+          path: |
+            if [ "$RUNNER_OS" == "Linux" ]; then
+              ~/.cache/pip
+            elif [ "$RUNNER_OS" == "Windows" ]; then
+              ~\AppData\Local\pip\Cache
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+      - name: Install dependencies
+        run: |
+          pip install poetry
+          poetry install
+      - name: Run tests
+        run: |
+          poetry run pytest --ignore="tests/test_local" --cov=./ --cov-report=xml
+      - name: Upload coverage
+        uses: codecov/codecov-action@v1
+        with:
+          fail_ci_if_error: true
+          env_vars: OS, PYTHON
+          name: ${{ matrix.os }}-${{ matrix.python-version }}
+          verbose: true
