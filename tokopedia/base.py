@@ -10,6 +10,7 @@ class BaseTokopedia(object):
         client_id: str,
         client_secret: str,
         access_token: Optional[AccessToken] = None,
+        base_url: str = BASE_URL,
     ):
         self._client_id = client_id
         self._client_secret = client_secret
@@ -17,6 +18,7 @@ class BaseTokopedia(object):
             client_id=client_id,
             client_secret=client_secret,
         )
+        self._base_url = base_url
 
     @property
     def client_id(self) -> str:
@@ -31,3 +33,7 @@ class BaseTokopedia(object):
             )
             return self._access_token
         return self._access_token
+
+    @property
+    def base_url(self) -> str:
+        return self._base_url
