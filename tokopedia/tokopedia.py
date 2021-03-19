@@ -18,9 +18,9 @@ class Tokopedia:
     @property
     def access_token(self) -> AccessToken:
         if not self._access_token:
-            self._access_token = AccessToken.create(
+            self._access_token.update(
                 client_id=self.client_id,
                 client_secret=self._client_secret,
             )
-            return
+            return self._access_token
         return self._access_token
