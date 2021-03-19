@@ -44,3 +44,6 @@ class AccessToken:
             query=query,
         )
         return cls(**res.json())
+
+    def __bool__(self) -> bool:
+        return self.is_expires
