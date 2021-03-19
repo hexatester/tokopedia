@@ -4,7 +4,7 @@
 [![Supported Python versions](https://img.shields.io/pypi/pyversions/tokopedia)](https://pypi.org/project/tokopedia/)
 [![LICENSE](https://img.shields.io/github/license/hexatester/tokopedia)](https://github.com/hexatester/tokopedia/blob/main/LICENSE)
 [![Tests](https://github.com/hexatester/tokopedia/actions/workflows/pytest.yml/badge.svg)](https://github.com/hexatester/tokopedia/actions/workflows/pytest.yml)
-[![codecov](https://codecov.io/gh/hexatester/tokopedia/branch/master/graph/badge.svg)](https://codecov.io/gh/hexatester/tokopedia)
+[![codecov](https://codecov.io/gh/hexatester/tokopedia/branch/main/graph/badge.svg)](https://codecov.io/gh/hexatester/tokopedia)
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
 [![Mypy](https://img.shields.io/badge/Mypy-enabled-brightgreen)](https://github.com/python/mypy)
 
