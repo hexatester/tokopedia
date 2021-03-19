@@ -2,6 +2,7 @@ import attr
 import requests
 from base64 import b64encode
 from datetime import datetime
+from typing import Dict, Optional
 
 from tokopedia.constants import USER_AGENT
 
@@ -20,6 +21,11 @@ class AccessToken:
     @property
     def is_expires(self) -> bool:
         return self.when_expires > datetime.now()
+
+    def create_headers(self, headers: Optional[Dict] = None) -> Dict:
+        headers = headers or dict()
+        headers.update({"Authorization": f"{self.token_type} {self.access_token}"})
+        return headers
 
     @classmethod
     def create(
