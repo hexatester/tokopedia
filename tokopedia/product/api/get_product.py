@@ -8,7 +8,7 @@ from tokopedia.product import ResponseProduct, ResponseProductV2, ResponseActive
 
 class GetProductApi(BaseTokopedia):
     def get_product_by_id(self, fsd_id: int, product_id: int) -> ResponseProduct:
-        """get_product_by_id This method will retrieve single product information by product id
+        """get_product_by_id This method will retrieve single product information by product id from related fs_id
 
         Args:
             fsd_id (int): Fulfillment service unique identifier
@@ -25,7 +25,7 @@ class GetProductApi(BaseTokopedia):
         return cattr.structure(data, ResponseProduct)
 
     def get_product_by_url(self, fsd_id: int, product_url: int) -> ResponseProduct:
-        """get_product_by_url This method will retrieve single product information by product url
+        """get_product_by_url This method will retrieve single product information by product url from related fs_id
 
         Args:
             fsd_id (int): Fulfillment service unique identifier
