@@ -59,8 +59,25 @@ class GetProductApi(BaseTokopedia):
         return cattr.structure(data, ResponseProduct)
 
     def get_product_from_related_shop_id(
-        self, fsd_id: int, shop_id: int, page: int, per_page: int, sort: int
-    ):
+        self,
+        fsd_id: int,
+        shop_id: int,
+        page: int,
+        per_page: int,
+        sort: int,
+    ) -> ResponseProduct:
+        """get_product_from_related_shop_id This method will retrieve all product information from related shop id that associate with fs id. This method also support pagination pages.
+
+        Args:
+            fsd_id (int): Fulfillment service unique identifier
+            shop_id (int): ShopID
+            page (int): Page (required if shop_id is filled)
+            per_page (int): Page per item (required if shop_id is filled). Maximun items are 50 for 1 page
+            sort (int): Sort List Product By available values includes:1 Default, 2 Last Update Product, 3 Highest Sold, 4 Lowest Sold, 5 Highest Price 6 Lowest Price, 7 Product Name Ascending (A-Z), 8 Product Name Descending (Z-A), 9 Fewest Stock, 10 Highest Stock
+
+        Returns:
+            ResponseProduct: Response
+        """
         res = self.session.get(
             url=self.url(f"/inventory/v1/fs/{fsd_id}/product/info"),
             query={
