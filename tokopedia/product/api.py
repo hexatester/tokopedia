@@ -1,8 +1,9 @@
 import cattr
 import json
-from tokopedia import BaseTokopedia
+from typing import Optional
 
-from . import ResponseProduct
+from tokopedia import BaseTokopedia
+from . import ResponseProduct, ResponseProductV2
 
 
 class ProductApi(BaseTokopedia):
@@ -44,3 +45,17 @@ class ProductApi(BaseTokopedia):
         )
         data = json.loads(res.text)
         return cattr.structure(data, ResponseProduct)
+
+    def get_all_products(
+        self,
+        fs_id: int,
+        page: int,
+        per_page: int,
+        product_id: Optional[int] = None,
+    ):
+        res = self.session.get(
+            url=f"/v2/products/fs/{fs_id}/{page}/{per_page}",
+            query={"product_id": product_id} if product_id else None,
+        )
+        data = json.loads(res.text)
+        return cattr.structure(data, ResponseProductV2)
