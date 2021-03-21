@@ -2,7 +2,7 @@ import cattr
 import json
 from tokopedia import BaseTokopedia
 
-from . import Product
+from . import ResponseProduct
 
 
 class ProductApi(BaseTokopedia):
@@ -12,7 +12,7 @@ class ProductApi(BaseTokopedia):
             query={"product_id": product_id},
         )
         data = json.loads(res.text)
-        return cattr.structure(data, Product)
+        return cattr.structure(data, ResponseProduct)
 
     def get_product_by_url(self, fsd_id: int, product_url: int):
         res = self.session.get(
@@ -20,4 +20,4 @@ class ProductApi(BaseTokopedia):
             query={"product_url": product_url},
         )
         data = json.loads(res.text)
-        return cattr.structure(data, Product)
+        return cattr.structure(data, ResponseProduct)
