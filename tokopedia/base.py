@@ -36,6 +36,7 @@ class BaseTokopedia(object):
                 client_id=self.client_id,
                 client_secret=self._client_secret,
             )
+            self.session.headers.update(self._access_token.create_headers())
             return self._access_token
         return self._access_token
 
