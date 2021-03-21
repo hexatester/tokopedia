@@ -19,5 +19,5 @@ class ProductV2:
 
 
 @attr.dataclass(slots=True)
-class ResponseProductV2(TokopediaResponse[ProductV2]):
+class ResponseProductV2(TokopediaResponse):
     data: List[ProductV2]

@@ -1,5 +1,5 @@
 import attr
-from typing import Generic, TypeVar, Union
+from typing import Union
 
 
 @attr.dataclass(slots=True)
@@ -18,10 +18,6 @@ class ErrorResponseHeader(BaseResponseHeader):
     error_code: str
 
 
-T = TypeVar("T")
-
-
 @attr.dataclass(slots=True)
-class TokopediaResponse(Generic[T]):
+class TokopediaResponse:
     header: Union[ResponseHeader, ErrorResponseHeader, None]
-    data: T

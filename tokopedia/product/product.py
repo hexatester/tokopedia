@@ -146,5 +146,6 @@ class Product:
     warehouses: List[ProductWarehouse]
 
 
-class ResponseProduct(TokopediaResponse[Product]):
+@attr.dataclass(slots=True)
+class ResponseProduct(TokopediaResponse):
     data: List[Product]
