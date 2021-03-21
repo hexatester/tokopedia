@@ -17,6 +17,7 @@ from .product import (
     Product,
     ResponseProduct,
 )
+from .product_v2 import ProductV2, ResponseProductV2
 from .api import ProductApi
 
 
@@ -38,5 +39,7 @@ __all__ = [
     "ProductWarehouse",
     "Product",
     "ResponseProduct",
+    "ProductV2",
+    "ResponseProductV2",
     "ProductApi",
 ]
