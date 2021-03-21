@@ -2,6 +2,7 @@ from typing import Optional
 
 from . import BaseTokopedia
 from . import ProductApi
+from .constants import BASE_URL
 
 
 class Tokopedia(BaseTokopedia):
