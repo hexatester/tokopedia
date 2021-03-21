@@ -147,4 +147,4 @@ class Product:
 
 
 class ResponseProduct(TokopediaResponse[Product]):
-    data: Product
+    data: List[Product]
