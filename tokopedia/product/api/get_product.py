@@ -3,10 +3,10 @@ import json
 from typing import Optional
 
 from tokopedia import BaseTokopedia
-from . import ResponseProduct, ResponseProductV2
+from tokopedia.product import ResponseProduct, ResponseProductV2
 
 
-class ProductApi(BaseTokopedia):
+class GetProductApi(BaseTokopedia):
     def get_product_by_id(self, fsd_id: int, product_id: int):
         res = self.session.get(
             url=self.url(f"/inventory/v1/fs/{fsd_id}/product/info"),
