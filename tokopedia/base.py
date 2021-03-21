@@ -1,5 +1,5 @@
 from requests import Session
-from typing import Optional
+from typing import Any, Optional
 
 from . import AccessToken
 from .constants import BASE_URL
@@ -59,14 +59,16 @@ class BaseTokopedia(object):
         """
         return self.base_url + path.lstrip("/")
 
-    def _query(self, *, **kwargs) -> dict:
+    def _query(self, *args, **kwargs: Any) -> dict:
         """_query to create query using kwargs
 
         Returns:
             dict: query
-        """        
+        """
         query = dict()
-        for key, val in kwargs.keys():
+        key: str
+        val: Any
+        for key, val in kwargs.keys():  # type: ignore
             if val is not None:
                 query[key] = val
-        return
+        return query
