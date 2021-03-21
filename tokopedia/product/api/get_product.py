@@ -103,7 +103,7 @@ class GetProductApi(BaseTokopedia):
             fs_id (int): Fulfillment service id.
             page (int): Page number to shown.
             per_page (int): The total number of products to be shown on one page.
-            product_id (Optional[int], optional): Product ID.. Defaults to None.
+            product_id (Optional[int], optional): Product ID. Defaults to None.
 
         Returns:
             ResponseProductV2: Response
@@ -130,7 +130,27 @@ class GetProductApi(BaseTokopedia):
         preorder: Optional[str] = None,
         free_return: Optional[str] = None,
         wholesale: Optional[str] = None,
-    ):
+    ) -> ResponseActiveProducts:
+        """get_all_active_products This endpoint retrieves a list of active products related to shop_id.
+
+        Args:
+            fs_id (int): Fulfillment service id.
+            shop_id (int): For every fs_id that related to more than one shop_id, request must contain shop_id.
+            rows (int): The total number of products to be shown.
+            start (int): Show results from n-th product.
+            order_by (Optional[int], optional): Product sort options. The default value is sort by name. Available values includes: 1 by promo, 3 by lowest price, 4 by highest price, 5 by highest rating, 8 by highest transaction, 9 by newest, 10 by latest update, 11 by position, 12 by name, 13 by view count, 14 by item sold, 15 by review count, 16 by discussion count, and 23 by best match. Defaults to None.
+            keyword (Optional[str], optional): Search by keyword (case insensitive). Defaults to None.
+            exclude_keyword (Optional[str], optional): Keyword to be excluded from search. Defaults to None.
+            sku (Optional[str], optional): Search by SKU. Defaults to None.
+            price_min (Optional[str], optional): Show only product with the minimum price of price_min. Valid value is 1 to 500.000.000. Defaults to None.
+            price_max (Optional[str], optional): Show only product with the maximum price of price_max. Valid value is 1 to 500.000.000. Defaults to None.
+            preorder (Optional[str], optional): Show only preorder products. Defaults to None.
+            free_return (Optional[str], optional): Show only products with free return. Defaults to None.
+            wholesale (Optional[str], optional): Show only wholesale products. Defaults to None.
+
+        Returns:
+            ResponseActiveProducts: Response
+        """
         query = self._query(
             fs_id=fs_id,
             shop_id=shop_id,
