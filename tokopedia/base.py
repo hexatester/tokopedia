@@ -1,3 +1,4 @@
+from requests import Session
 from typing import Optional
 
 from . import AccessToken
@@ -10,6 +11,7 @@ class BaseTokopedia(object):
         client_id: str,
         client_secret: str,
         access_token: Optional[AccessToken] = None,
+        session: Optional[Session] = None,
         base_url: str = BASE_URL,
     ):
         self._client_id = client_id
@@ -19,6 +21,7 @@ class BaseTokopedia(object):
             client_secret=client_secret,
         )
         self._base_url = base_url
+        self._session = session or Session()
 
     @property
     def client_id(self) -> str:
@@ -37,3 +40,7 @@ class BaseTokopedia(object):
     @property
     def base_url(self) -> str:
         return self._base_url
+
+    @property
+    def session(self) -> Session:
+        return self._session
