@@ -1,7 +1,7 @@
 import attr
-from typing import List
+from typing import List, Optional
 
-from tokopedia import TokopediaResponse
+from tokopedia import TokopediaResponseV2
 
 
 @attr.dataclass(slots=True)
@@ -19,5 +19,5 @@ class ProductV2:
 
 
 @attr.dataclass(slots=True)
-class ResponseProductV2(TokopediaResponse):
+class ResponseProductV2(TokopediaResponseV2):
     data: List[ProductV2]
