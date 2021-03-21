@@ -23,5 +23,5 @@ T = TypeVar("T")
 
 @attr.dataclass(slots=True)
 class TokopediaResponse(Generic[T]):
-    header: Union[ResponseHeader, ErrorResponseHeader]
+    header: Union[ResponseHeader, ErrorResponseHeader, None]
     data: T
