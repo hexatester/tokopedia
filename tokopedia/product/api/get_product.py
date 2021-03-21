@@ -96,7 +96,18 @@ class GetProductApi(BaseTokopedia):
         page: int,
         per_page: int,
         product_id: Optional[int] = None,
-    ):
+    ) -> ResponseProductV2:
+        """get_all_products This is the new version of Get All Products V1, which adds sku field to the product object.
+
+        Args:
+            fs_id (int): Fulfillment service id.
+            page (int): Page number to shown.
+            per_page (int): The total number of products to be shown on one page.
+            product_id (Optional[int], optional): Product ID.. Defaults to None.
+
+        Returns:
+            ResponseProductV2: Response
+        """
         res = self.session.get(
             url=f"/v2/products/fs/{fs_id}/{page}/{per_page}",
             query={"product_id": product_id} if product_id else None,
