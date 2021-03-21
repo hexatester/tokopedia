@@ -41,7 +41,16 @@ class GetProductApi(BaseTokopedia):
         data = json.loads(res.text)
         return cattr.structure(data, ResponseProduct)
 
-    def get_product_by_sku(self, fsd_id: int, sku: int):
+    def get_product_by_sku(self, fsd_id: int, sku: int) -> ResponseProduct:
+        """get_product_by_sku This method will retrieve single product information by product sku from related fs_id
+
+        Args:
+            fsd_id (int): Fulfillment service unique identifier
+            sku (int): Product’s SKU
+
+        Returns:
+            ResponseProduct: Response
+        """
         res = self.session.get(
             url=self.url(f"/inventory/v1/fs/{fsd_id}/product/info"),
             query={"sku": sku},
