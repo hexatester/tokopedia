@@ -7,7 +7,16 @@ from tokopedia.product import ResponseProduct, ResponseProductV2, ResponseActive
 
 
 class GetProductApi(BaseTokopedia):
-    def get_product_by_id(self, fsd_id: int, product_id: int):
+    def get_product_by_id(self, fsd_id: int, product_id: int) -> ResponseProduct:
+        """get_product_by_id This method will retrieve single product information by product id
+
+        Args:
+            fsd_id (int): Fulfillment service unique identifier
+            product_id (int): product id
+
+        Returns:
+            ResponseProduct: Response
+        """
         res = self.session.get(
             url=self.url(f"/inventory/v1/fs/{fsd_id}/product/info"),
             query={"product_id": product_id},
