@@ -47,3 +47,14 @@ class BaseTokopedia(object):
     @property
     def session(self) -> Session:
         return self._session
+
+    def url(self, path: str) -> str:
+        """url create full url from path
+
+        Args:
+            path (str): url path
+
+        Returns:
+            str: full url
+        """
+        return self.base_url + path.lstrip("/")
