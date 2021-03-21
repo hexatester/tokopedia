@@ -22,6 +22,8 @@ class BaseTokopedia(object):
         )
         self._base_url = base_url
         self._session = session or Session()
+        if not session:
+            self.session.headers.update(self.access_token.create_headers())
 
     @property
     def client_id(self) -> str:
