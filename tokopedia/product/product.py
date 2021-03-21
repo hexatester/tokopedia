@@ -1,6 +1,6 @@
 import attr
 from datetime import datetime
-from typing import Dict, List
+from typing import Dict, List, Optional, Union
 
 from tokopedia.utils.helpers import int_to_datetime
 
@@ -21,7 +21,7 @@ class ProductPrice:
     value: int
     currency: int
     idr: int
-    LastUpdateUnix: datetime = attr.ib(converter=int_to_datetime)
+    LastUpdateUnix: Optional[datetime]
 
 
 @attr.dataclass(slots=True)
@@ -54,6 +54,13 @@ class ProductExtraAttribute:
     minOrder: int
     lastUpdateCategory: int
     isEligibleCOD: bool
+
+
+@attr.dataclass(slots=True)
+class ProductWholesale:
+    price: ProductPrice
+    minQuantity: int
+    maxQuantity: int
 
 
 @attr.dataclass(slots=True)
@@ -125,13 +132,14 @@ class Product:
     main_stock: int
     reserve_stock: int
     variant: ProductVariant
-    menu: ProductMenu
+    menu: Union[ProductMenu, Dict]
     preorder: Dict
     extraAttribute: ProductExtraAttribute
+    wholesale: Optional[ProductWholesale]
     categoryTree: List[ProductCategory]
     pictures: List[ProductPicture]
-    GMStats: ProductGMStats
-    stats: ProductStats
+    GMStats: Union[ProductGMStats, Dict]
+    stats: Union[ProductStats, Dict]
     other: ProductOther
     campaign: ProductCampaign
     warehouses: List[ProductWarehouse]
