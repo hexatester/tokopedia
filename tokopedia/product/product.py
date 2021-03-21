@@ -2,6 +2,7 @@ import attr
 from datetime import datetime
 from typing import Dict, List, Optional, Union
 
+from tokopedia import TokopediaResponse
 from tokopedia.utils.helpers import int_to_datetime
 
 
@@ -143,3 +144,7 @@ class Product:
     other: ProductOther
     campaign: ProductCampaign
     warehouses: List[ProductWarehouse]
+
+
+class ResponseProduct(TokopediaResponse[Product]):
+    data: Product

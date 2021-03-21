@@ -15,6 +15,7 @@ from .product import (
     ProductWarehouseStock,
     ProductWarehouse,
     Product,
+    ResponseProduct,
 )
 from .api import ProductApi
 
@@ -36,5 +37,6 @@ __all__ = [
     "ProductWarehouseStock",
     "ProductWarehouse",
     "Product",
+    "ResponseProduct",
     "ProductApi",
 ]
