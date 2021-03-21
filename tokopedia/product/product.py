@@ -3,7 +3,6 @@ from datetime import datetime
 from typing import Dict, List, Optional, Union
 
 from tokopedia import TokopediaResponse
-from tokopedia.utils.helpers import int_to_datetime
 
 
 @attr.dataclass(slots=True)

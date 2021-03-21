@@ -1,5 +1,5 @@
 import attr
-from typing import List, Optional
+from typing import List
 
 from tokopedia import TokopediaResponseV2
 
