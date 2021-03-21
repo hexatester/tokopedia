@@ -58,3 +58,15 @@ class BaseTokopedia(object):
             str: full url
         """
         return self.base_url + path.lstrip("/")
+
+    def _query(self, *, **kwargs) -> dict:
+        """_query to create query using kwargs
+
+        Returns:
+            dict: query
+        """        
+        query = dict()
+        for key, val in kwargs.keys():
+            if val is not None:
+                query[key] = val
+        return
