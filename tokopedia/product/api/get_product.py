@@ -3,7 +3,7 @@ import json
 from typing import Optional
 
 from tokopedia import BaseTokopedia
-from tokopedia.product import ResponseProduct, ResponseProductV2
+from tokopedia.product import ResponseProduct, ResponseProductV2, ResponseActiveProducts
 
 
 class GetProductApi(BaseTokopedia):
@@ -59,3 +59,41 @@ class GetProductApi(BaseTokopedia):
         )
         data = json.loads(res.text)
         return cattr.structure(data, ResponseProductV2)
+
+    def get_all_active_products(
+        self,
+        fs_id: int,
+        shop_id: int,
+        rows: int,
+        start: int,
+        order_by: Optional[int] = None,
+        keyword: Optional[str] = None,
+        exclude_keyword: Optional[str] = None,
+        sku: Optional[str] = None,
+        price_min: Optional[str] = None,
+        price_max: Optional[str] = None,
+        preorder: Optional[str] = None,
+        free_return: Optional[str] = None,
+        wholesale: Optional[str] = None,
+    ):
+        query = self._query(
+            fs_id=fs_id,
+            shop_id=shop_id,
+            rows=rows,
+            start=start,
+            order_by=order_by,
+            keyword=keyword,
+            exclude_keyword=exclude_keyword,
+            sku=sku,
+            price_min=price_min,
+            price_max=price_max,
+            preorder=preorder,
+            free_return=free_return,
+            wholesale=wholesale,
+        )
+        res = self.session.get(
+            url=f"/inventory/v1/fs/{fs_id}/product/list",
+            query=query,
+        )
+        data = json.loads(res.text)
+        return cattr.structure(data, ResponseActiveProducts)
