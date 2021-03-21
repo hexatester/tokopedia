@@ -21,3 +21,11 @@ class ProductApi(BaseTokopedia):
         )
         data = json.loads(res.text)
         return cattr.structure(data, ResponseProduct)
+
+    def get_product_by_sku(self, fsd_id: int, sku: int):
+        res = self.session.get(
+            url=self.url(f"/inventory/v1/fs/{fsd_id}/product/info"),
+            query={"sku": sku},
+        )
+        data = json.loads(res.text)
+        return cattr.structure(data, ResponseProduct)
