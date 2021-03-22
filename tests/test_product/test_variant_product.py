@@ -1,5 +1,5 @@
 import cattr
-from tokopedia.response import ResponseHeader
+from tokopedia.response import ResponseHeader, ErrorResponseHeader
 from tokopedia.product import ResponseVariantProduct, VariantProduct
 from tokopedia.product.variant_product import VariantChildren, Variant
 
@@ -177,3 +177,19 @@ def test_get_variant_by_product_id():
         assert isinstance(variant, Variant)
     for children in res.data.children:
         assert isinstance(children, VariantChildren)
+
+
+def test_get_variant_by_product_id_error():
+    data = {
+        "header": {
+            "process_time": 0.903005513,
+            "messages": "We could not process your request due to malformed request, please check again",
+            "reason": "Failed Send GRPC Request",
+            "error_code": "PRD_GRPC_001",
+        },
+        "data": None,
+    }
+    res: ResponseVariantProduct = cattr.structure(data, ResponseVariantProduct)
+    assert isinstance(res, ResponseVariantProduct)
+    assert res.data is None
+    assert isinstance(res.header, ErrorResponseHeader)
