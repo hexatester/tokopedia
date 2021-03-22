@@ -20,6 +20,7 @@ from .product import (
 from .product_v2 import ProductV2, ResponseProductV2
 from .active_products import ActiveProducts, ResponseActiveProducts
 from .variant_category import VariantCategory, ResponseVariantCategory
+from .variant_product import VariantProduct, ResponseVariantProduct
 from .api import ProductApi
 
 
@@ -47,5 +48,7 @@ __all__ = [
     "ResponseActiveProducts",
     "VariantCategory",
     "ResponseVariantCategory",
+    "VariantProduct",
+    "ResponseVariantProduct",
     "ProductApi",
 ]
