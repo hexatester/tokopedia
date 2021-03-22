@@ -1,8 +1,12 @@
+import cattr
 from requests import Session
-from typing import Any, Optional
+from typing import Any, Optional, Type, TypeVar
 
 from . import AccessToken
 from .constants import BASE_URL
+
+
+T = TypeVar("T", bound=object)
 
 
 class BaseTokopedia(object):
@@ -47,6 +51,9 @@ class BaseTokopedia(object):
     @property
     def session(self) -> Session:
         return self._session
+
+    def _cast(self, obj: Any, cl: Type[T]) -> T:
+        return cattr.structure(obj, cl)
 
     def _url(self, path: str) -> str:
         """url create full url from path
