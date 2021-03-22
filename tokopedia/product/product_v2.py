@@ -1,7 +1,5 @@
 import attr
-from typing import List
-
-from tokopedia import TokopediaResponseV2
+from typing import List, Optional
 
 
 @attr.dataclass(slots=True)
@@ -19,5 +17,7 @@ class ProductV2:
 
 
 @attr.dataclass(slots=True)
-class ResponseProductV2(TokopediaResponseV2):
-    data: List[ProductV2]
+class ResponseProductV2:
+    data: List[ProductV2] = attr.ib(factory=list)
+    status: Optional[str] = None
+    error_message: Optional[List[str]] = None
