@@ -147,4 +147,4 @@ class Product:
 
 @attr.dataclass(slots=True)
 class ResponseProduct(TokopediaResponse):
-    data: List[Product]
+    data: Optional[List[Product]]
