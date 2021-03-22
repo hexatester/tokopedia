@@ -1,6 +1,6 @@
 import attr
 from datetime import datetime
-from typing import Dict, List, Optional, Union
+from typing import Dict, List, Optional
 
 from tokopedia import TokopediaResponse
 
@@ -123,7 +123,7 @@ class ProductWarehouse:
     stock: ProductWarehouseStock
 
 
-@attr.dataclass(slots=True)
+@attr.dataclass(slots=True, kw_only=True)
 class Product:
     basic: ProductBasic
     price: ProductPrice
@@ -132,14 +132,14 @@ class Product:
     main_stock: int
     reserve_stock: int
     variant: ProductVariant
-    menu: Union[ProductMenu, Dict]
+    menu: Optional[ProductMenu]
     preorder: Dict
     extraAttribute: ProductExtraAttribute
-    wholesale: Optional[ProductWholesale]
+    wholesale: Optional[ProductWholesale] = None
     categoryTree: List[ProductCategory]
     pictures: List[ProductPicture]
-    GMStats: Union[ProductGMStats, Dict]
-    stats: Union[ProductStats, Dict]
+    GMStats: Optional[ProductGMStats]
+    stats: Optional[ProductStats]
     other: ProductOther
     campaign: ProductCampaign
     warehouses: List[ProductWarehouse]
