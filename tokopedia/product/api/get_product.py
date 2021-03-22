@@ -1,5 +1,3 @@
-import cattr
-import json
 from typing import Optional
 
 from tokopedia import BaseTokopedia
@@ -17,12 +15,11 @@ class GetProductApi(BaseTokopedia):
         Returns:
             ResponseProduct: Response
         """
-        res = self.session.get(
+        return self._get(
             url=self._url(f"/inventory/v1/fs/{fsd_id}/product/info"),
             query={"product_id": product_id},
+            cl=ResponseProduct,
         )
-        data = json.loads(res.text)
-        return cattr.structure(data, ResponseProduct)
 
     def get_product_by_url(self, fsd_id: int, product_url: int) -> ResponseProduct:
         """get_product_by_url This method will retrieve single product information by product url from related fs_id
@@ -34,12 +31,11 @@ class GetProductApi(BaseTokopedia):
         Returns:
             ResponseProduct: Response
         """
-        res = self.session.get(
+        return self._get(
             url=self._url(f"/inventory/v1/fs/{fsd_id}/product/info"),
             query={"product_url": product_url},
+            cl=ResponseProduct,
         )
-        data = json.loads(res.text)
-        return cattr.structure(data, ResponseProduct)
 
     def get_product_by_sku(self, fsd_id: int, sku: int) -> ResponseProduct:
         """get_product_by_sku This method will retrieve single product information by product sku from related fs_id
@@ -51,12 +47,11 @@ class GetProductApi(BaseTokopedia):
         Returns:
             ResponseProduct: Response
         """
-        res = self.session.get(
+        return self._get(
             url=self._url(f"/inventory/v1/fs/{fsd_id}/product/info"),
             query={"sku": sku},
+            cl=ResponseProduct,
         )
-        data = json.loads(res.text)
-        return cattr.structure(data, ResponseProduct)
 
     def get_product_from_related_shop_id(
         self,
@@ -78,7 +73,7 @@ class GetProductApi(BaseTokopedia):
         Returns:
             ResponseProduct: Response
         """
-        res = self.session.get(
+        return self._get(
             url=self._url(f"/inventory/v1/fs/{fsd_id}/product/info"),
             query={
                 "shop_id": shop_id,
@@ -86,9 +81,8 @@ class GetProductApi(BaseTokopedia):
                 "per_page": per_page,
                 "sort": sort,
             },
+            cl=ResponseProduct,
         )
-        data = json.loads(res.text)
-        return cattr.structure(data, ResponseProduct)
 
     def get_all_products(
         self,
@@ -108,12 +102,11 @@ class GetProductApi(BaseTokopedia):
         Returns:
             ResponseProductV2: Response
         """
-        res = self.session.get(
+        return self._get(
             url=f"/v2/products/fs/{fs_id}/{page}/{per_page}",
             query={"product_id": product_id} if product_id else None,
+            cl=ResponseProductV2,
         )
-        data = json.loads(res.text)
-        return cattr.structure(data, ResponseProductV2)
 
     def get_all_active_products(
         self,
@@ -166,9 +159,8 @@ class GetProductApi(BaseTokopedia):
             free_return=free_return,
             wholesale=wholesale,
         )
-        res = self.session.get(
+        return self._get(
             url=f"/inventory/v1/fs/{fs_id}/product/list",
             query=query,
+            cl=ResponseActiveProducts,
         )
-        data = json.loads(res.text)
-        return cattr.structure(data, ResponseActiveProducts)
