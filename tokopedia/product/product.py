@@ -33,13 +33,14 @@ class ProductWeight:
 @attr.dataclass(slots=True)
 class ProductStock:
     value: int
-    stockWording: str
+    stockWording: Optional[str] = None
+    useStock: Optional[bool] = None
 
 
 @attr.dataclass(slots=True)
 class ProductVariant:
-    isParent: bool
-    isVariant: bool
+    isParent: Optional[bool] = None
+    isVariant: Optional[bool] = None
     childrenID: List[int] = attr.ib(factory=list)
 
 
@@ -53,7 +54,7 @@ class ProductMenu:
 class ProductExtraAttribute:
     minOrder: int
     lastUpdateCategory: int
-    isEligibleCOD: bool
+    isEligibleCOD: Optional[bool] = None
 
 
 @attr.dataclass(slots=True)
@@ -86,14 +87,14 @@ class ProductPicture:
 
 @attr.dataclass(slots=True)
 class ProductGMStats:
-    transactionSuccess: int
-    transactionReject: int
-    countSold: int
+    transactionSuccess: Optional[int] = None
+    transactionReject: Optional[int] = None
+    countSold: Optional[int] = None
 
 
 @attr.dataclass(slots=True)
 class ProductStats:
-    countView: int
+    countView: Optional[int] = None
 
 
 @attr.dataclass(slots=True)
@@ -130,16 +131,16 @@ class Product:
     weight: ProductWeight
     stock: ProductStock
     main_stock: int
-    reserve_stock: int
+    reserve_stock: Optional[int] = None
     variant: ProductVariant
-    menu: Optional[ProductMenu]
+    menu: ProductMenu
     preorder: Dict
     extraAttribute: ProductExtraAttribute
     wholesale: Optional[ProductWholesale] = None
     categoryTree: List[ProductCategory]
     pictures: List[ProductPicture]
-    GMStats: Optional[ProductGMStats]
-    stats: Optional[ProductStats]
+    GMStats: ProductGMStats
+    stats: ProductStats
     other: ProductOther
     campaign: ProductCampaign
     warehouses: List[ProductWarehouse]
