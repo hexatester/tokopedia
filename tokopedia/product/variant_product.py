@@ -47,7 +47,6 @@ class VariantChildren:
     price_fmt: str
     stock: int
     main_stock: int
-    reserve_stock: int
     sku: str
     option_ids: List[int]
     enabled: bool
@@ -59,6 +58,7 @@ class VariantChildren:
     stock_wording: str
     other_variant_stock: str
     is_limited_stock: bool
+    reserve_stock: Optional[int] = None
 
 
 @attr.dataclass(slots=True)
