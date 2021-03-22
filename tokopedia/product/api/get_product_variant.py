@@ -1,6 +1,3 @@
-import cattr
-import json
-
 from tokopedia import BaseTokopedia
 from tokopedia.product import ResponseVariantCategory
 
@@ -18,9 +15,8 @@ class GetProductVariantApi(BaseTokopedia):
         Returns:
             ResponseVariantCategory: Variants related to category id
         """
-        res = self.session.get(
+        return self._get(
             url=self._url("/inventory/v1/fs/:fs_id/category/get_variant"),
             query={"cat_id": cat_id},
+            cl=ResponseVariantCategory,
         )
-        data = json.loads(res.text)
-        return cattr.structure(data, ResponseVariantCategory)
