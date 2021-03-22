@@ -1,5 +1,5 @@
 import cattr
-from tokopedia.response import ResponseHeader
+from tokopedia.response import ResponseHeader, ErrorResponseHeader
 from tokopedia.product import ResponseVariantCategory, VariantCategory
 from tokopedia.product.variant_category import VariantUnit
 
@@ -43,3 +43,18 @@ def test_get_variant_by_category_id():
         assert isinstance(variant, VariantCategory)
         for unit in variant.units:
             assert isinstance(unit, VariantUnit)
+
+
+def test_get_variant_by_category_id_error():
+    data = {
+        "header": {
+            "process_time": 0.000048264,
+            "messages": "We could not process your request due to malformed request, please check again",
+            "reason": "invalid fs_id format",
+            "error_code": "VRT_DLV_002",
+        },
+        "data": None,
+    }
+    res: ResponseVariantCategory = cattr.structure(data, ResponseVariantCategory)
+    assert isinstance(res.header, ErrorResponseHeader)
+    assert res.data is None
