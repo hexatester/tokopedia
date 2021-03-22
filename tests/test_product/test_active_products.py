@@ -1,5 +1,5 @@
 import cattr
-from tokopedia.response import ResponseHeader
+from tokopedia.response import ResponseHeader, ErrorResponseHeader
 from tokopedia.product import ResponseActiveProducts
 from tokopedia.product.active_products import ActiveProducts
 from tokopedia.product.active_products import ActiveProductsShop
@@ -79,3 +79,18 @@ def test_get_active_products():
         for badge in product.badges:
             assert isinstance(badge, ActiveProductBadge)
         break
+
+
+def test_get_active_products_error():
+    data = {
+        "header": {
+            "process_time": 0.000048463,
+            "messages": "We could not process your request due to malformed request, please check again",
+            "reason": "invalid shop_id format",
+            "error_code": "PRD_DLV_003",
+        },
+        "data": None,
+    }
+    res: ResponseActiveProducts = cattr.structure(data, ResponseActiveProducts)
+    assert isinstance(res.header, ErrorResponseHeader)
+    assert res.data is None
