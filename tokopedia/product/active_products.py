@@ -68,4 +68,4 @@ class ActiveProducts:
 
 @attr.dataclass(slots=True)
 class ResponseActiveProducts(TokopediaResponse):
-    data: ActiveProducts
+    data: Optional[ActiveProducts] = None
