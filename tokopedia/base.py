@@ -3,6 +3,7 @@ import json
 from requests import Session
 from typing import Any, Optional, Type, TypeVar
 
+from tokopedia.utils import register_hooks
 from . import AccessToken
 from .constants import BASE_URL
 
@@ -29,6 +30,7 @@ class BaseTokopedia(object):
         self._session = session or Session()
         if not session:
             self.session.headers.update(self.access_token.create_headers())
+        self._register_hooks()
 
     @property
     def client_id(self) -> str:
@@ -87,3 +89,5 @@ class BaseTokopedia(object):
             if val is not None:
                 query[key] = val
         return query
+
+    _register_hooks = staticmethod(register_hooks)
