@@ -16,7 +16,7 @@ class GetProductVariantApi(BaseTokopedia):
             ResponseVariantCategory: Variants related to category id
         """
         return self._get(
-            url=self._url("/inventory/v1/fs/:fs_id/category/get_variant"),
+            url=self._url(f"/inventory/v1/fs/{fs_id}/category/get_variant"),
             query={"cat_id": cat_id},
             cl=ResponseVariantCategory,
         )
