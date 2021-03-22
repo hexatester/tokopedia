@@ -53,7 +53,7 @@ class BaseTokopedia(object):
     def session(self) -> Session:
         return self._session
 
-    def _get(self, url: str, query: dict, cl: Type[T]) -> T:
+    def _get(self, url: str, query: Optional[dict], cl: Type[T]) -> T:
         if not url.startswith(self.base_url):
             url = self._url(url)
         res = self.session.get(url=url, query=query)
