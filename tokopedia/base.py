@@ -48,7 +48,7 @@ class BaseTokopedia(object):
     def session(self) -> Session:
         return self._session
 
-    def url(self, path: str) -> str:
+    def _url(self, path: str) -> str:
         """url create full url from path
 
         Args:

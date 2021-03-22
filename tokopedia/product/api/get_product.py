@@ -18,7 +18,7 @@ class GetProductApi(BaseTokopedia):
             ResponseProduct: Response
         """
         res = self.session.get(
-            url=self.url(f"/inventory/v1/fs/{fsd_id}/product/info"),
+            url=self._url(f"/inventory/v1/fs/{fsd_id}/product/info"),
             query={"product_id": product_id},
         )
         data = json.loads(res.text)
@@ -35,7 +35,7 @@ class GetProductApi(BaseTokopedia):
             ResponseProduct: Response
         """
         res = self.session.get(
-            url=self.url(f"/inventory/v1/fs/{fsd_id}/product/info"),
+            url=self._url(f"/inventory/v1/fs/{fsd_id}/product/info"),
             query={"product_url": product_url},
         )
         data = json.loads(res.text)
@@ -52,7 +52,7 @@ class GetProductApi(BaseTokopedia):
             ResponseProduct: Response
         """
         res = self.session.get(
-            url=self.url(f"/inventory/v1/fs/{fsd_id}/product/info"),
+            url=self._url(f"/inventory/v1/fs/{fsd_id}/product/info"),
             query={"sku": sku},
         )
         data = json.loads(res.text)
@@ -79,7 +79,7 @@ class GetProductApi(BaseTokopedia):
             ResponseProduct: Response
         """
         res = self.session.get(
-            url=self.url(f"/inventory/v1/fs/{fsd_id}/product/info"),
+            url=self._url(f"/inventory/v1/fs/{fsd_id}/product/info"),
             query={
                 "shop_id": shop_id,
                 "page": page,
