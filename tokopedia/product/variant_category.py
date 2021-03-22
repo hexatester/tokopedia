@@ -32,4 +32,4 @@ class VariantCategory:
 
 @attr.dataclass(slots=True)
 class ResponseVariantCategory(TokopediaResponse):
-    data: Optional[VariantCategory]
+    data: Optional[List[VariantCategory]]
