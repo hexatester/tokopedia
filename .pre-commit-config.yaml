@@ -7,13 +7,13 @@ repos:
         args:
           - --diff
   - repo: https://gitlab.com/pycqa/flake8
-    rev: 3.9.0
+    rev: 3.9.2
     hooks:
       - id: flake8
         args:
           - --ignore=E501
-  - repo: git://github.com/pycqa/pylint
-    rev: pylint-2.7.2
+  - repo: https://github.com/PyCQA/pylint/
+    rev: v2.9.1
     hooks:
       - id: pylint
         files: ^tokopedia/.*\.py$
