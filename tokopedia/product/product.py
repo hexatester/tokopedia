@@ -1,6 +1,6 @@
 import attr
 from datetime import datetime
-from typing import Dict, List, Optional
+from typing import List, Optional
 
 from tokopedia import TokopediaResponse
 
@@ -134,7 +134,7 @@ class Product:
     reserve_stock: Optional[int] = None
     variant: ProductVariant
     menu: ProductMenu
-    preorder: Dict
+    preorder: dict
     extraAttribute: ProductExtraAttribute
     wholesale: Optional[ProductWholesale] = None
     categoryTree: List[ProductCategory]
