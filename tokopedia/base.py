@@ -62,6 +62,13 @@ class BaseTokopedia(object):
         data = json.loads(res.text)
         return self._cast(data, cl)
 
+    def _post(self, url: str, data: dict, cl: Type[T]) -> T:
+        if not url.startswith(self.base_url):
+            url = self._url(url)
+        res = self.session.post(url=url, data=data)
+        data = json.loads(res.text)
+        return self._cast(data, cl)
+
     def _cast(self, obj: Any, cl: Type[T]) -> T:
         return cattr.structure(obj, cl)
 
