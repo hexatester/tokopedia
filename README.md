@@ -8,7 +8,7 @@
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
 [![Mypy](https://img.shields.io/badge/Mypy-enabled-brightgreen)](https://github.com/python/mypy)
 
-Python SDK for Tokopedia Seller API. This SDK allows you to integrate your system into Tokopedia
+Python SDK for [Tokopedia Seller API](https://developer.tokopedia.com/openapi/guide/). This SDK allows you to integrate your system into Tokopedia
 
 ## Featured API
 
